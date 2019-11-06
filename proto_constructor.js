@@ -1,7 +1,7 @@
 'use strict';
 
 // Задание № 1
-console.log(`===== Задание № 1 =====`); 
+console.log(`===== Задание № 1 =====`);
 
 var positions = [
   {
@@ -81,7 +81,7 @@ for (let item of items) {
 }
 
 // Задание № 2
-console.log(`===== Задание № 2 =====`); 
+console.log(`===== Задание № 2 =====`);
 
 
 const config = {
@@ -92,12 +92,12 @@ const config = {
   set(amount) {
     try {
       if (amount > this.price) {
-        throw new Error ('Финальная стоимость превышает обычную!');
+        throw new Error('Финальная стоимость превышает обычную!');
       }
 
       this.discount = ((this.price - amount) / this.price * 100).toFixed(1);
 
-    } catch(e) {
+    } catch (e) {
       console.log(e.message);
     }
   }
@@ -116,4 +116,61 @@ console.log(positions[2].finalPrice); // 28500
 positions[2].finalPrice = 56700;
 console.log(positions[2].discount); // 0.5
 
+//Задание № 3
+console.log(`===== Задание № 3 =====`);
 
+const requiredFields = ['title', 'price', 'discount'];
+let form1 = {
+  title: 'Товар Телепорт бытовой VZHIH-101',
+  price: 7800,
+  discount: 0
+};
+let form2 = {
+  title: 'Товар Телепорт бытовой VZHIH-101',
+  discount: 10
+};
+let form3 = {
+  title: 'Товар Телепорт бытовой VZHIH-101',
+  price: 7800,
+};
+let form4 = {
+  title: 'Товар Телепорт бытовой VZHIH-101',
+  price: 7800,
+  discount: 0
+};
+
+if (isValidPosition(form1, requiredFields)) {
+  console.log('Форма № 1 заполнена верно');
+} else {
+  console.log('В форме № 1 не заполнены необходимые поля');
+}
+
+if (isValidPosition(form2, requiredFields)) {
+  console.log('Форма № 2 заполнена верно');
+} else {
+  console.log('В форме № 2 не заполнены необходимые поля');
+}
+
+if (isValidPosition(form3, requiredFields)) {
+  console.log('Форма № 3 заполнена верно');
+} else {
+  console.log('В форме № 3 не заполнены необходимые поля');
+}
+
+if (isValidPosition(form4, requiredFields)) {
+  console.log('Форма № 4 заполнена верно');
+} else {
+  console.log('В форме № 4 не заполнены необходимые поля');
+}
+
+function isValidPosition(form, fields) {
+  let result = true;
+
+  fields.forEach((item) => {
+    if (!form.hasOwnProperty(item)) {
+      result = false;
+    }
+  });
+
+  return result;
+}
